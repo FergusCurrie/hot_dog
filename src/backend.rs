@@ -5,7 +5,7 @@ use dioxus::prelude::*;
 
 
 #[server]
-async fn save_dog(image: String) -> Result<(), ServerFnError>{
+pub async fn save_dog(image: String) -> Result<(), ServerFnError>{
     DB.with(|f| f.execute("INSERT Into dogs (url) VALUES (?1)", &[&image]))?;
     Ok(())
 }
